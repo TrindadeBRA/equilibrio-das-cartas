@@ -7,7 +7,7 @@ const ResultTarotCard = ({ cardData }: any) => {
     return null; // ou exiba uma mensagem de erro ou um componente de carregamento
   }
 
-  const { card_name_pt, card_name_en, card_arcanes_type, card_reading, card_illustration, token_coins, card_position } = cardData;
+  const { card_name_pt, card_name_en, card_arcanes_type, card_reading, card_illustration, token_coins, card_position, card_theme } = cardData;
 
   const card_position_class = card_position ? '' : 'transform rotate-180';
 
