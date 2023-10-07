@@ -13,12 +13,12 @@ const mailingLists = [
 ]
 
 
-function classNames(...classes) {
+function classNames(...classes:any) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function PlayTarotCard() {
-  const [selectedMailingLists, setSelectedMailingLists] = useState(null)
+  const [selectedMailingLists, setSelectedMailingLists]:any = useState(null)
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function PlayTarotCard() {
     console.log('Valor selecionado:', selectedMailingLists?.value);
     router.push({
       pathname: '/carta-sorteada',
-      query: { selectedThemeValue: selectedMailingLists?.value, selectedThemeTitle: selectedMailingLists?.title },
+      query: { selectedThemeValue: selectedMailingLists?.value },
     });
   };
   
