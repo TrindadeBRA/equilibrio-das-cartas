@@ -23,9 +23,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Sidebar({ contentComponent: ContentComponent }: any) {
+export default function Sidebar({ contentComponent: ContentComponent}: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [slug, setSlug] = useState('');
+  
 
   useEffect(() => {
     // Get the current URL
@@ -34,13 +35,12 @@ export default function Sidebar({ contentComponent: ContentComponent }: any) {
     // Extract the slug from the URL
     const url = new URL(currentUrl);
     const pathname = url.pathname;
-    const parts = pathname.split('/');
-
     // Set the slug in the state variable
-    setSlug(parts[parts.length - 1]);
+    setSlug(pathname);
 
-    console.log("slug", slug)
   }, []);
+
+  // console.log("XX", ContentCompoent)
 
   return (
     <>
@@ -104,7 +104,7 @@ export default function Sidebar({ contentComponent: ContentComponent }: any) {
                                 <a
                                   href={item.href}
                                   className={classNames(
-                                    item.href == `/${slug}`
+                                    item.href == slug
                                       ? 'bg-indigo-700 text-white'
                                       : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
@@ -112,7 +112,7 @@ export default function Sidebar({ contentComponent: ContentComponent }: any) {
                                 >
                                   <item.icon
                                     className={classNames(
-                                      item.href == `/${slug}` ? 'text-white' : 'text-indigo-200 group-hover:text-white',
+                                      item.href == slug ? 'text-white' : 'text-indigo-200 group-hover:text-white',
                                       'h-6 w-6 shrink-0'
                                     )}
                                     aria-hidden="true"
@@ -152,7 +152,7 @@ export default function Sidebar({ contentComponent: ContentComponent }: any) {
                         <a
                           href={item.href}
                           className={classNames(
-                            item.href == `/${slug}`
+                            item.href == slug
                               ? 'bg-indigo-700 text-white'
                               : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
@@ -160,7 +160,7 @@ export default function Sidebar({ contentComponent: ContentComponent }: any) {
                         >
                           <item.icon
                             className={classNames(
-                              item.href == `/${slug}` ? 'text-white' : 'text-indigo-200 group-hover:text-white',
+                              item.href == slug ? 'text-white' : 'text-indigo-200 group-hover:text-white',
                               'h-6 w-6 shrink-0'
                             )}
                             aria-hidden="true"

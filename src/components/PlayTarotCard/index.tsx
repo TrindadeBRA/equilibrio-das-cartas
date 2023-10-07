@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 import { RadioGroup } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 
@@ -21,14 +22,23 @@ export default function PlayTarotCard() {
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
-    console.log('Valor selecionado:', selectedMailingLists?.value);
-    // Ajustar, quando o radio é pressionado deve aparecer o botao
     if (typeof selectedMailingLists?.value === 'string') {
       setShowButton(true);
     } else {
       setShowButton(false);
     }
   }, [selectedMailingLists]);
+
+  const router = useRouter();
+
+  const handleLogSelected = () => {
+    console.log('Valor selecionado:', selectedMailingLists?.value);
+    router.push({
+      pathname: '/carta-sorteada',
+      query: { selectedThemeValue: selectedMailingLists?.value, selectedThemeTitle: selectedMailingLists?.title },
+    });
+  };
+  
   
 
 
@@ -82,8 +92,8 @@ export default function PlayTarotCard() {
         </div>
       </RadioGroup>
       {showButton && (
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-          Meu Botão
+        <button onClick={handleLogSelected} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-4">
+          Sortear carta
         </button>
       )}
     </>
