@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} **/
 const nextConfig = {
-  reactStrictMode: true,
+  images: {
+    domains: ['lucastrindade.dev', 'tailwindui.com', 'equilibriodascartas.thetrinityweb.com.br'],
+  },
 }
 
 module.exports = nextConfig
