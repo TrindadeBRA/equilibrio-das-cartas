@@ -35,7 +35,7 @@ export default function PlayTarotCard() {
     console.log('Valor selecionado:', selectedMailingLists?.value);
     router.push({
       pathname: '/carta-sorteada',
-      query: { selectedThemeValue: selectedMailingLists?.value },
+      query: { themeReading: selectedMailingLists?.value },
     });
   };
   

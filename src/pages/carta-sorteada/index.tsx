@@ -7,8 +7,6 @@ import ResultTarotCard from '@/components/ResultTarotCard'
 
 export default function ResultCardPage({ cardData }:any) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    console.log(":::::::::::::::::::", cardData);
-
     return (
         <>
             <div>
@@ -20,7 +18,7 @@ export default function ResultCardPage({ cardData }:any) {
 }
 
 export async function getServerSideProps(context:any) {
-    const { selectedThemeValue } = context.query;
+    const { themeReading } = context.query;
     try {
         const response = await fetch('https://equilibriodascartas.thetrinityweb.com.br/wp-json/tarot-api/v1/random-card/', {
             method: 'POST',
@@ -28,8 +26,8 @@ export async function getServerSideProps(context:any) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                user_id: 555,
-                theme: selectedThemeValue,
+                user_id: 1,
+                theme: themeReading,
             }),
         });
 

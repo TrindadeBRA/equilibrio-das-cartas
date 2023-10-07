@@ -206,8 +206,8 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
           </a>
         </div>
 
-        <main className="py-4 lg:pl-72">
-          <div className="px-4 sm:px-6 lg:px-8">
+        <main className="py-4 lg:pl-72 h-[100vh]">
+          <div className="px-4 sm:px-6 lg:px-8 h-full">
             {ContentComponent && <ContentComponent />}
           </div>
         </main>
