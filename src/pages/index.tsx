@@ -35,19 +35,19 @@ const Login = () => {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               <Image
-                width={100}
-                height={40}
-                className="h-10 w-auto"
-                src="/mark.png"
+                width={296}
+                height={64}
+                className="m-auto"
+                src="/logo-dark.webp"
                 alt="Your Company"
               />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Sign in to your account
+                Entre com o seu perfil
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500">
-                Not a member?{' '}
-                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                  Start a 14 day free trial
+                Ainda não tem?{' '}
+                <a href="#" className="font-semibold text-[#da18ff] hover:text-indigo-500">
+                  Ganhe uma leitura grátis!
                 </a>
               </p>
             </div>
@@ -57,7 +57,7 @@ const Login = () => {
                 <form onSubmit={formik.handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                      Email address
+                      Endereço de e-mail
                     </label>
                     <div className="mt-2">
                       <input
@@ -67,7 +67,7 @@ const Login = () => {
                         autoComplete="email"
                         required
                         {...formik.getFieldProps('email')}
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#da18ff] sm:text-sm sm:leading-6"
                       />
                       {formik.touched.email && formik.errors.email ? (
                         <p className="mt-2 text-sm text-red-600">{formik.errors.email}</p>
@@ -77,7 +77,7 @@ const Login = () => {
 
                   <div>
                     <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                      Password
+                      Senha
                     </label>
                     <div className="mt-2">
                       <input
@@ -87,7 +87,7 @@ const Login = () => {
                         autoComplete="current-password"
                         required
                         {...formik.getFieldProps('password')}
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#da18ff] sm:text-sm sm:leading-6"
                       />
                       {formik.touched.password && formik.errors.password ? (
                         <p className="mt-2 text-sm text-red-600">{formik.errors.password}</p>
@@ -96,21 +96,9 @@ const Login = () => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <input
-                        id="remember-me"
-                        name="remember-me"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                      <label htmlFor="remember-me" className="ml-3 block text-sm leading-6 text-gray-700">
-                        Remember me
-                      </label>
-                    </div>
-
                     <div className="text-sm leading-6">
-                      <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                        Forgot password?
+                      <a href="#" className="font-semibold text-[#da18ff] hover:text-indigo-500">
+                        Esqueceu a senha?
                       </a>
                     </div>
                   </div>
@@ -118,9 +106,9 @@ const Login = () => {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-[#da18ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#da18ff]"
                     >
-                      Sign in
+                      Conectar
                     </button>
                   </div>
                 </form>
@@ -131,7 +119,7 @@ const Login = () => {
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
             className="absolute inset-0 h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
+            src="/bg-login.webp"
             alt=""
           />
         </div>
