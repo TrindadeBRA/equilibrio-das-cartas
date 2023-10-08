@@ -7,9 +7,12 @@ const Login = () => {
   const router = useRouter();
 
   const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    email: Yup.string().email('Endereço de e-mail inválido').required('E-mail é obrigatório'),
+    password: Yup.string()
+      .required('Senha é obrigatória')
+      .min(8, 'A senha deve ter pelo menos 8 caracteres'),
   });
+  
 
   const formik = useFormik({
     initialValues: {
@@ -35,7 +38,7 @@ const Login = () => {
                 width={100}
                 height={40}
                 className="h-10 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src="/mark.png"
                 alt="Your Company"
               />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
