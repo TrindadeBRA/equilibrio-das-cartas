@@ -62,7 +62,6 @@ const Login = () => {
                     <div className="mt-2">
                       <input
                         id="email"
-                        name="email"
                         type="email"
                         autoComplete="email"
                         required
@@ -82,7 +81,6 @@ const Login = () => {
                     <div className="mt-2">
                       <input
                         id="password"
-                        name="password"
                         type="password"
                         autoComplete="current-password"
                         required
