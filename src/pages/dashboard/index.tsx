@@ -1,19 +1,29 @@
-import { useState } from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Sidebar from '@/components/Sidebar'
-import BannerHeader from '@/components/BannerHeader'
-import DashView from '@/components/DashView'
+import DashView from '@/components/DashView';
+import Sidebar from '@/components/Sidebar';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useAuth } from '@/components/Auth/AuthContext';
+import ProtectedRoute from '@/components/Auth/ProtectedRoute';
 
-// ... restante do seu código
+const Dashboard = () => {
+  const { user } = useAuth(); 
+  const router = useRouter();
 
-export default function Dashboard() {
-    const [sidebarOpen, setSidebarOpen] = useState(false)
+  useEffect(() => {
+    if (!user) {
+      router.push('/');
+    }
+  }, [user, router]);
 
-    return (
-        <>
-            <div>
-                <Sidebar contentComponent={DashView} />
-            </div>
-        </>
-    )
-}
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <ProtectedRoute>
+      <div>
+        <Sidebar contentComponent={DashView} />
+      </div>
+    </ProtectedRoute>
+  );
+};
+
+export default Dashboard;

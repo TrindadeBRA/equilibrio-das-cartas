@@ -1,18 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Sidebar from '@/components/Sidebar'
 import DashView from '@/components/DashView'
+import { useAuth } from '@/components/Auth/AuthContext';
+import ProtectedRoute from '@/components/Auth/ProtectedRoute';
+import { useRouter } from 'next/router'
 
-// ... restante do seu código
-
-export default function Dashboard() {
+export default function HistoricCards() {
     const [sidebarOpen, setSidebarOpen] = useState(false)
+
+    const { user } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!user) {
+            router.push('/');
+        }
+    }, [user, router]);
 
     return (
         <>
-            <div>
-                <Sidebar contentComponent={DashView} />
-            </div>
+            <ProtectedRoute>
+                <div>
+                    <Sidebar contentComponent={DashView} />
+                </div>
+            </ProtectedRoute>
+
         </>
     )
 }

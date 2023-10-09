@@ -2,9 +2,12 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
+import { useAuth } from '@/components/Auth/AuthContext';
 
 const Login = () => {
   const router = useRouter();
+
+  const { login } = useAuth(); // Use o hook useAuth para acessar o contexto de autenticação
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Endereço de e-mail inválido').required('E-mail é obrigatório'),
@@ -39,6 +42,9 @@ const Login = () => {
           // Se a resposta da API for bem-sucedida, salve o JWT na sessão
           sessionStorage.setItem('jwt', data.token);
           sessionStorage.setItem('email', data.user_email);
+
+          login(data.user_email, data.token);
+
           // Redirecione para a página de dashboard
           router.push('/dashboard');
         } else {
