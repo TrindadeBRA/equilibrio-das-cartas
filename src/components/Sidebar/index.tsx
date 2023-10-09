@@ -10,6 +10,7 @@ import {
   UserIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
+import Image from 'next/image';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon},
@@ -19,7 +20,7 @@ const navigation = [
   { name: 'Meu Perfil', href: '/meu-perfil', icon: UserIcon},
 ]
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -89,9 +90,11 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#da18ff] px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=white"
+                      <Image
+                        width={296}
+                        height={64}
+                        className=""
+                        src="/logo-light.webp"
                         alt="Your Company"
                       />
                     </div>
@@ -105,14 +108,14 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
                                   href={item.href}
                                   className={classNames(
                                     item.href == slug
-                                      ? 'bg-indigo-700 text-white'
-                                      : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
+                                      ? 'bg-[#9e30b4] text-white'
+                                      : 'text-white hover:text-white hover:bg-[#9e30b4]',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                   )}
                                 >
                                   <item.icon
                                     className={classNames(
-                                      item.href == slug ? 'text-white' : 'text-indigo-200 group-hover:text-white',
+                                      item.href == slug ? 'text-white' : 'text-white group-hover:text-white',
                                       'h-6 w-6 shrink-0'
                                     )}
                                     aria-hidden="true"
@@ -137,9 +140,11 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#da18ff] px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=white"
+              <Image
+                width={296}
+                height={64}
+                className=""
+                src="/logo-light.webp"
                 alt="Your Company"
               />
             </div>
@@ -153,14 +158,14 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
                           href={item.href}
                           className={classNames(
                             item.href == slug
-                              ? 'bg-indigo-700 text-white'
-                              : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
+                              ? 'bg-[#9e30b4] text-white'
+                              : 'text-white hover:text-white hover:bg-[#9e30b4]',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
                           <item.icon
                             className={classNames(
-                              item.href == slug ? 'text-white' : 'text-indigo-200 group-hover:text-white',
+                              item.href == slug ? 'text-white' : 'text-white group-hover:text-white',
                               'h-6 w-6 shrink-0'
                             )}
                             aria-hidden="true"
@@ -174,12 +179,14 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
                 <li className="-mx-6 mt-auto">
                   <a
                     href="#"
-                    className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-700"
+                    className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-[#9e30b4]"
                   >
-                    <img
-                      className="h-8 w-8 rounded-full bg-indigo-700"
+                    <Image
+                      className="h-8 w-8 rounded-full bg-[#9e30b4]"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt=""
+                      height={32}
+                      width={32}
                     />
                     <span className="sr-only">Your profile</span>
                     <span aria-hidden="true">Tom Cook</span>
@@ -191,17 +198,19 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
         </div>
 
         <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-[#da18ff] px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-          <button type="button" className="-m-2.5 p-2.5 text-indigo-200 lg:hidden" onClick={() => setSidebarOpen(true)}>
+          <button type="button" className="-m-2.5 p-2.5 text-white lg:hidden" onClick={() => setSidebarOpen(true)}>
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
           <div className="flex-1 text-sm font-semibold leading-6 text-white">Dashboard</div>
           <a href="#">
             <span className="sr-only">Your profile</span>
-            <img
-              className="h-8 w-8 rounded-full bg-indigo-700"
+            <Image
+              className="h-8 w-8 rounded-full bg-[#9e30b4]"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
+              height={32}
+              width={32}
             />
           </a>
         </div>

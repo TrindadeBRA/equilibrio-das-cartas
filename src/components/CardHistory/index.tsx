@@ -9,6 +9,8 @@ import {
   PlusSmallIcon,
 } from '@heroicons/react/20/solid'
 import { BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image';
+
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -110,7 +112,7 @@ const clients = [
   },
 ]
 
-function classNames(...classes) {
+function classNames(...classes:any) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -227,10 +229,7 @@ export default function CardHistory() {
                                         {transaction.amount}
                                       </div>
                                       <div
-                                        className={classNames(
-                                          statuses[transaction.status],
-                                          'rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
-                                        )}
+                                        className='rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
                                       >
                                         {transaction.status}
                                       </div>
@@ -287,11 +286,11 @@ export default function CardHistory() {
                 {clients.map((client) => (
                   <li key={client.id} className="overflow-hidden rounded-xl border border-gray-200">
                     <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                      <img
+                      {/* <Image
                         src={client.imageUrl}
                         alt={client.name}
                         className="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10"
-                      />
+                      /> */}
                       <div className="text-sm font-medium leading-6 text-gray-900">{client.name}</div>
                       <Menu as="div" className="relative ml-auto">
                         <Menu.Button className="-m-2.5 block p-2.5 text-gray-400 hover:text-gray-500">
@@ -350,10 +349,7 @@ export default function CardHistory() {
                         <dd className="flex items-start gap-x-2">
                           <div className="font-medium text-gray-900">{client.lastInvoice.amount}</div>
                           <div
-                            className={classNames(
-                              statuses[client.lastInvoice.status],
-                              'rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
-                            )}
+                            className='rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
                           >
                             {client.lastInvoice.status}
                           </div>

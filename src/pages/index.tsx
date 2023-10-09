@@ -41,13 +41,13 @@ const Login = () => {
                 src="/logo-dark.webp"
                 alt="Your Company"
               />
-              <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900 text-center">
                 Entre com o seu perfil
               </h2>
-              <p className="mt-2 text-sm leading-6 text-gray-500">
-                Ainda não tem?{' '}
-                <a href="#" className="font-semibold text-[#da18ff] hover:text-indigo-500">
-                  Ganhe uma leitura grátis!
+              <p className="mt-2 text-sm leading-6 text-gray-500 text-center">
+                Ainda não tem uma conta?{' '}
+                <a href="#" className="font-semibold text-[#da18ff] hover:text-[#9e30b4]">
+                  ganhe uma leitura grátis!
                 </a>
               </p>
             </div>
@@ -97,7 +97,7 @@ const Login = () => {
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm leading-6">
-                      <a href="#" className="font-semibold text-[#da18ff] hover:text-indigo-500">
+                      <a href="#" className="font-semibold text-[#da18ff] hover:text-[#9e30b4]">
                         Esqueceu a senha?
                       </a>
                     </div>
@@ -106,7 +106,7 @@ const Login = () => {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-[#da18ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#da18ff]"
+                      className="flex w-full justify-center rounded-md bg-[#da18ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#9e30b4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#da18ff]"
                     >
                       Conectar
                     </button>
@@ -117,8 +117,10 @@ const Login = () => {
           </div>
         </div>
         <div className="relative hidden w-0 flex-1 lg:block">
-          <img
+          <Image
             className="absolute inset-0 h-full w-full object-cover"
+            width={1920}
+            height={1080}
             src="/bg-login.webp"
             alt=""
           />

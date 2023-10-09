@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Sidebar from '@/components/Sidebar'
-import BannerHeader from '@/components/BannerHeader'
-import DashView from '@/components/DashView'
 import ResultTarotCard from '@/components/ResultTarotCard'
+import Sidebar from '@/components/Sidebar'
+import { useState } from 'react'
 
 export default function ResultCardPage({ cardData }:any) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
         <>
             <div>
-                {/* Certifique-se de passar o componente ResultTarotCard como uma função */}
                 <Sidebar contentComponent={() => <ResultTarotCard cardData={cardData} />} />
             </div>
         </>

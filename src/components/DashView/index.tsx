@@ -9,6 +9,8 @@ import {
   PlusSmallIcon,
 } from '@heroicons/react/20/solid'
 import { BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image';
+
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -110,7 +112,7 @@ const clients = [
   },
 ]
 
-function classNames(...classes) {
+function classNames(...classes:any) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -142,33 +144,7 @@ export default function DashView() {
             </div>
           </header>
 
-          {/* Stats */}
-          <div className="border-b border-b-gray-900/10 lg:border-t lg:border-t-gray-900/5">
-            <dl className="mx-auto grid max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:px-2 xl:px-0">
-              {stats.map((stat, statIdx) => (
-                <div
-                  key={stat.name}
-                  className={classNames(
-                    statIdx % 2 === 1 ? 'sm:border-l' : statIdx === 2 ? 'lg:border-l' : '',
-                    'flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 border-t border-gray-900/5 px-4 py-10 sm:px-6 lg:border-t-0 xl:px-8'
-                  )}
-                >
-                  <dt className="text-sm font-medium leading-6 text-gray-500">{stat.name}</dt>
-                  <dd
-                    className={classNames(
-                      stat.changeType === 'negative' ? 'text-rose-600' : 'text-gray-700',
-                      'text-xs font-medium'
-                    )}
-                  >
-                    {stat.change}
-                  </dd>
-                  <dd className="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
-                    {stat.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+
 
           <div
             className="absolute left-0 top-full -z-10 mt-96 origin-top-left translate-y-40 -rotate-90 transform-gpu opacity-20 blur-3xl sm:left-1/2 sm:-ml-96 sm:-mt-10 sm:translate-y-0 sm:rotate-0 sm:transform-gpu sm:opacity-50"
@@ -227,10 +203,7 @@ export default function DashView() {
                                         {transaction.amount}
                                       </div>
                                       <div
-                                        className={classNames(
-                                          statuses[transaction.status],
-                                          'rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
-                                        )}
+                                        className='rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
                                       >
                                         {transaction.status}
                                       </div>
@@ -287,11 +260,11 @@ export default function DashView() {
                 {clients.map((client) => (
                   <li key={client.id} className="overflow-hidden rounded-xl border border-gray-200">
                     <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                      <img
+                    {/* <Image
                         src={client.imageUrl}
                         alt={client.name}
                         className="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10"
-                      />
+                      /> */}
                       <div className="text-sm font-medium leading-6 text-gray-900">{client.name}</div>
                       <Menu as="div" className="relative ml-auto">
                         <Menu.Button className="-m-2.5 block p-2.5 text-gray-400 hover:text-gray-500">
@@ -350,10 +323,7 @@ export default function DashView() {
                         <dd className="flex items-start gap-x-2">
                           <div className="font-medium text-gray-900">{client.lastInvoice.amount}</div>
                           <div
-                            className={classNames(
-                              statuses[client.lastInvoice.status],
-                              'rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
-                            )}
+                            className='rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset'
                           >
                             {client.lastInvoice.status}
                           </div>
