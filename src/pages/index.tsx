@@ -20,11 +20,34 @@ const Login = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      // Aqui você pode lidar com a submissão do formulário, por exemplo, fazer a chamada de API para autenticação
-      console.log(values);
-      // Redirect para a página de dashboard após a autenticação
-      router.push('/dashboard');
+    onSubmit: async (values) => {
+      try {
+        const response = await fetch('https://equilibriodascartas.thetrinityweb.com.br/wp-json/jwt-auth/v1/token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: values.email,
+            password: values.password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Se a resposta da API for bem-sucedida, salve o JWT na sessão
+          sessionStorage.setItem('jwt', data.token);
+          sessionStorage.setItem('email', data.user_email);
+          // Redirecione para a página de dashboard
+          router.push('/dashboard');
+        } else {
+          // Se houver um erro na resposta da API, exiba a mensagem de erro
+          console.error('Erro ao autenticar:', data.message);
+        }
+      } catch (error) {
+        console.error('Erro ao autenticar:', error);
+      }
     },
   });
 
@@ -129,3 +152,8 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+
