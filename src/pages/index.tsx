@@ -2,12 +2,10 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
-import { useAuth } from '@/components/Auth/AuthContext';
 
 const Login = () => {
   const router = useRouter();
 
-  const { setContextLogin } = useAuth(); // Use o hook useAuth para acessar o contexto de autenticação
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Endereço de e-mail inválido').required('E-mail é obrigatório'),
@@ -46,9 +44,6 @@ const Login = () => {
           // Defina os cookies com os valores do token JWT e e-mail
           document.cookie = `jwt=${data.token}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `email=${data.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
-        
-          // Chame a função de setContextLogin com os dados do usuário
-          setContextLogin(data.user_email, data.token);
 
           // Redirecione para a página de dashboard
           window.location.href = '/dashboard';
