@@ -7,7 +7,7 @@ import { useAuth } from '@/components/Auth/AuthContext';
 const Login = () => {
   const router = useRouter();
 
-  const { login } = useAuth(); // Use o hook useAuth para acessar o contexto de autenticação
+  const { setContextLogin } = useAuth(); // Use o hook useAuth para acessar o contexto de autenticação
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Endereço de e-mail inválido').required('E-mail é obrigatório'),
@@ -39,14 +39,19 @@ const Login = () => {
         const data = await response.json();
 
         if (response.ok) {
-          // Se a resposta da API for bem-sucedida, salve o JWT na sessão
-          sessionStorage.setItem('jwt', data.token);
-          sessionStorage.setItem('email', data.user_email);
-
-          login(data.user_email, data.token);
+          const thirtyDaysInSeconds = 30 * 24 * 60 * 60;
+          const expirationDate = new Date();
+          expirationDate.setTime(expirationDate.getTime() + thirtyDaysInSeconds * 1000);
+        
+          // Defina os cookies com os valores do token JWT e e-mail
+          document.cookie = `jwt=${data.token}; expires=${expirationDate.toUTCString()}; path=/`;
+          document.cookie = `email=${data.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
+        
+          // Chame a função de setContextLogin com os dados do usuário
+          setContextLogin(data.user_email, data.token);
 
           // Redirecione para a página de dashboard
-          router.push('/dashboard');
+          window.location.href = '/dashboard';
         } else {
           // Se houver um erro na resposta da API, exiba a mensagem de erro
           console.error('Erro ao autenticar:', data.message);
