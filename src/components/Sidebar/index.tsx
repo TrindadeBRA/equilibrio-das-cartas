@@ -25,7 +25,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Sidebar({ contentComponent: ContentComponent}: any) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [slug, setSlug] = useState('');
   
 

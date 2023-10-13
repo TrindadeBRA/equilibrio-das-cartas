@@ -4,12 +4,12 @@ import { RadioGroup } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 
 const mailingLists = [
-  { id: 1, title: 'Profissional', value: "professional", description: 'Lorem ipsum del aqua.' },
-  { id: 2, title: 'Amoroso', value: "loving", description: 'Lorem ipsum del aqua.' },
-  { id: 3, title: 'Espiritual', value: "spiritual", description: 'Lorem ipsum del aqua.' },
-  { id: 4, title: 'Financeiro', value: "financial", description: 'Lorem ipsum del aqua.' },
-  { id: 3, title: 'Familiar', value: "family", description: 'Lorem ipsum del aqua.' },
-  { id: 3, title: 'Saúde', value: "health", description: 'Lorem ipsum del aqua.' },
+  { id: 1, title: 'Profissional', value: "professional", description: 'Explore as cartas para orientação sobre sua vida profissional. Descubra insights sobre oportunidades de carreira, desenvolvimento pessoal e sucesso no trabalho. Deixe as cartas do tarot guiá-lo no caminho para alcançar seus objetivos profissionais e atingir seu pleno potencial.' },
+  { id: 2, title: 'Amoroso', value: "loving", description: 'Em busca de respostas sobre sua vida amorosa? As cartas do tarot podem oferecer perspectivas sobre relacionamentos existentes, romances futuros e a jornada emocional que você está prestes a embarcar. Permita que as cartas revelem segredos do coração e orientem você no caminho do amor verdadeiro e duradouro.' },
+  { id: 3, title: 'Espiritual', value: "spiritual", description: 'Conecte-se com seu eu interior e descubra verdades espirituais profundas. As cartas do tarot podem iluminar sua jornada espiritual, fornecendo insights sobre crescimento pessoal, autoconhecimento e conexão com o universo. Deixe as energias do tarot guiarem você em sua jornada espiritual.' },
+  { id: 4, title: 'Financeiro', value: "financial", description: 'Em busca de estabilidade financeira e prosperidade? As cartas do tarot podem revelar padrões em suas finanças, oferecendo conselhos sobre investimentos, planejamento financeiro e oportunidades de crescimento. Deixe as cartas do tarot guiarem suas decisões financeiras e ajude você a alcançar a segurança financeira que deseja.' },
+  { id: 3, title: 'Familiar', value: "family", description: 'Suas questões familiares estão causando preocupação? O tarot pode oferecer clareza sobre dinâmicas familiares, comunicação e harmonia no lar. Descubra orientações sobre resolução de conflitos, fortalecimento de laços familiares e criação de um ambiente familiar amoroso e acolhedor.' },
+  { id: 3, title: 'Saúde', value: "health", description: 'Sua saúde física e mental é uma prioridade. As cartas do tarot podem oferecer insights sobre seu bem-estar, sugerindo mudanças positivas no estilo de vida, estratégias de gerenciamento do estresse e conselhos sobre autocuidado. Deixe as cartas do tarot orientarem você no caminho para uma vida mais saudável e equilibrada.' },
 ]
 
 
@@ -56,7 +56,7 @@ export default function PlayTarotCard() {
               value={mailingList}
               className={({ active }) =>
                 classNames(
-                  active ? 'border-indigo-600 ring-2 ring-indigo-600' : 'border-gray-300',
+                  active ? 'border-[#da18ff] ring-2 ring-[#da18ff]' : 'border-gray-300',
                   'relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none'
                 )
               }
@@ -74,13 +74,13 @@ export default function PlayTarotCard() {
                     </span>
                   </span>
                   <CheckCircleIcon
-                    className={classNames(!checked ? 'invisible' : '', 'h-5 w-5 text-indigo-600')}
+                    className={classNames(!checked ? 'invisible' : '', 'h-5 w-5 text-[#da18ff]')}
                     aria-hidden="true"
                   />
                   <span
                     className={classNames(
                       active ? 'border' : 'border-2',
-                      checked ? 'border-indigo-600' : 'border-transparent',
+                      checked ? 'border-[#da18ff]' : 'border-transparent',
                       'pointer-events-none absolute -inset-px rounded-lg'
                     )}
                     aria-hidden="true"
@@ -92,7 +92,7 @@ export default function PlayTarotCard() {
         </div>
       </RadioGroup>
       {showButton && (
-        <button onClick={handleLogSelected} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-4">
+        <button onClick={handleLogSelected} className="bg-[#da18ff] hover:bg-[#9e30b4] text-white font-bold py-2 px-4 rounded mt-4">
           Sortear carta
         </button>
       )}
