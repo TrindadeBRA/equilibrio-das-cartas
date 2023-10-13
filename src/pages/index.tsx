@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head'
 
 type AuthError = string | null;
 
@@ -18,7 +19,7 @@ export default function Login() {
       .required('Senha é obrigatória')
       .min(8, 'A senha deve ter pelo menos 8 caracteres'),
   });
-  
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -48,7 +49,7 @@ export default function Login() {
           const thirtyDaysInSeconds = 30 * 24 * 60 * 60;
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + thirtyDaysInSeconds * 1000);
-        
+
           // Defina os cookies com os valores do token JWT e e-mail
           document.cookie = `jwt=${data.token}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `email=${data.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
@@ -57,7 +58,7 @@ export default function Login() {
           // Redirecione para a página de dashboard
           window.location.href = '/dashboard';
         } else {
-          
+
           // Se houver um erro na resposta da API, exiba a mensagem de erro
           switch (data.code) {
             case "[jwt_auth] incorrect_password":
@@ -67,7 +68,7 @@ export default function Login() {
             case "[jwt_auth] invalid_email":
               setAuthError("Endereço de e-mail desconhecido.");
               break;
-          
+
             default:
               break;
           }
@@ -83,6 +84,9 @@ export default function Login() {
 
   return (
     <>
+      <Head>
+        <title>Login - Equilíbrio das cartas</title>
+      </Head>
       <div className="flex min-h-full flex-1">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -146,7 +150,7 @@ export default function Login() {
 
                       {authError && (
                         <p className="mt-2 text-sm text-red-600">{authError}</p>
-                      )}                      
+                      )}
                     </div>
                   </div>
 

@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import Head from 'next/head';
 
 type AuthError = string | null;
 
@@ -123,6 +124,9 @@ export default function CreateAccount() {
 
     return (
         <>
+            <Head>
+                <title>Crie sua conta - Equilíbrio das cartas</title>
+            </Head>
             <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
                     <Image
