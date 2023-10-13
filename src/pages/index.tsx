@@ -46,6 +46,8 @@ export default function Login() {
 
         if (response.ok) {
 
+          console.log("Dados de login:", data);
+
           const thirtyDaysInSeconds = 30 * 24 * 60 * 60;
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + thirtyDaysInSeconds * 1000);
@@ -54,6 +56,9 @@ export default function Login() {
           document.cookie = `jwt=${data.token}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `email=${data.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `user_id=${data.user_id}; expires=${expirationDate.toUTCString()}; path=/`;
+          document.cookie = `first_name=${data.first_name}; expires=${expirationDate.toUTCString()}; path=/`;
+          document.cookie = `last_name=${data.last_name}; expires=${expirationDate.toUTCString()}; path=/`;
+          document.cookie = `date_of_birth=${data.date_of_birth}; expires=${expirationDate.toUTCString()}; path=/`;
 
           // Redirecione para a página de dashboard
           window.location.href = '/dashboard';
