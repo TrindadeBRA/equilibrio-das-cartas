@@ -3,11 +3,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
 import { useState } from 'react';
+import Link from 'next/link';
 
 type AuthError = string | null;
 
-const Login = () => {
-  const router = useRouter();
+export default function Login() {
 
   const [authError, setAuthError] = useState<AuthError>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,6 @@ const Login = () => {
       .min(8, 'A senha deve ter pelo menos 8 caracteres'),
   });
   
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -99,9 +98,9 @@ const Login = () => {
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500 text-center">
                 Ainda não tem uma conta?{' '}
-                <a href="#" className="font-semibold text-[#da18ff] hover:text-[#9e30b4]">
+                <Link href="/criar-conta" className="font-semibold text-[#da18ff] hover:text-[#9e30b4]">
                   ganhe uma leitura grátis!
-                </a>
+                </Link>
               </p>
             </div>
 
@@ -185,9 +184,6 @@ const Login = () => {
     </>
   );
 };
-
-export default Login;
-
 
 
 
