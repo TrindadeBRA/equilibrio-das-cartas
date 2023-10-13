@@ -44,6 +44,7 @@ export default function Login() {
         const data = await response.json();
 
         if (response.ok) {
+
           const thirtyDaysInSeconds = 30 * 24 * 60 * 60;
           const expirationDate = new Date();
           expirationDate.setTime(expirationDate.getTime() + thirtyDaysInSeconds * 1000);
@@ -51,7 +52,7 @@ export default function Login() {
           // Defina os cookies com os valores do token JWT e e-mail
           document.cookie = `jwt=${data.token}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `email=${data.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
-
+          document.cookie = `user_id=${data.user_id}; expires=${expirationDate.toUTCString()}; path=/`;
 
           // Redirecione para a página de dashboard
           window.location.href = '/dashboard';
@@ -97,9 +98,9 @@ export default function Login() {
                 Entre com o seu perfil
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500 text-center">
-                Ainda não tem uma conta?{' '}
+                Ainda não tem uma conta?{' - '}
                 <Link href="/criar-conta" className="font-semibold text-[#da18ff] hover:text-[#9e30b4]">
-                  ganhe uma leitura grátis!
+                  Crie agora!
                 </Link>
               </p>
             </div>
