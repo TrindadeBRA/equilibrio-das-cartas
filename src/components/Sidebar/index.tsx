@@ -134,7 +134,7 @@ export default function Sidebar({ contentComponent: ContentComponent, title }: a
                       >
                         <Image
                           className="h-12 w-12 rounded-full bg-[#9e30b4]"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src={user?.avatar_url}
                           alt=""
                           height={48}
                           width={48}
@@ -200,7 +200,7 @@ export default function Sidebar({ contentComponent: ContentComponent, title }: a
                   >
                     <Image
                       className="h-12 w-12 rounded-full bg-[#9e30b4]"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={user?.avatar_url ? user?.avatar_url : "/public/avatar.webp"}
                       alt=""
                       height={48}
                       width={48}

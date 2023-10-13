@@ -76,6 +76,11 @@ export default function CreateAccount() {
                         document.cookie = `jwt=${dataLogin.token}; expires=${expirationDate.toUTCString()}; path=/`;
                         document.cookie = `email=${dataLogin.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
                         document.cookie = `user_id=${dataLogin.user_id}; expires=${expirationDate.toUTCString()}; path=/`;
+                        document.cookie = `first_name=${dataLogin.first_name}; expires=${expirationDate.toUTCString()}; path=/`;
+                        document.cookie = `last_name=${dataLogin.last_name}; expires=${expirationDate.toUTCString()}; path=/`;
+                        document.cookie = `date_of_birth=${dataLogin.date_of_birth}; expires=${expirationDate.toUTCString()}; path=/`;
+                        document.cookie = `tokens_coins=${dataLogin.tokens_coins}; expires=${expirationDate.toUTCString()}; path=/`;
+                        document.cookie = `avatar_url=${dataLogin.avatar_url}; expires=${expirationDate.toUTCString()}; path=/`;
 
                         window.location.href = '/dashboard';
 

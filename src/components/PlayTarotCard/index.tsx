@@ -4,13 +4,14 @@ import { RadioGroup } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 
 const mailingLists = [
-  { id: 1, title: 'Profissional', value: "professional", description: 'Explore as cartas para orientação sobre sua vida profissional. Descubra insights sobre oportunidades de carreira, desenvolvimento pessoal e sucesso no trabalho. Deixe as cartas do tarot guiá-lo no caminho para alcançar seus objetivos profissionais e atingir seu pleno potencial.' },
-  { id: 2, title: 'Amoroso', value: "loving", description: 'Em busca de respostas sobre sua vida amorosa? As cartas do tarot podem oferecer perspectivas sobre relacionamentos existentes, romances futuros e a jornada emocional que você está prestes a embarcar. Permita que as cartas revelem segredos do coração e orientem você no caminho do amor verdadeiro e duradouro.' },
-  { id: 3, title: 'Espiritual', value: "spiritual", description: 'Conecte-se com seu eu interior e descubra verdades espirituais profundas. As cartas do tarot podem iluminar sua jornada espiritual, fornecendo insights sobre crescimento pessoal, autoconhecimento e conexão com o universo. Deixe as energias do tarot guiarem você em sua jornada espiritual.' },
-  { id: 4, title: 'Financeiro', value: "financial", description: 'Em busca de estabilidade financeira e prosperidade? As cartas do tarot podem revelar padrões em suas finanças, oferecendo conselhos sobre investimentos, planejamento financeiro e oportunidades de crescimento. Deixe as cartas do tarot guiarem suas decisões financeiras e ajude você a alcançar a segurança financeira que deseja.' },
-  { id: 3, title: 'Familiar', value: "family", description: 'Suas questões familiares estão causando preocupação? O tarot pode oferecer clareza sobre dinâmicas familiares, comunicação e harmonia no lar. Descubra orientações sobre resolução de conflitos, fortalecimento de laços familiares e criação de um ambiente familiar amoroso e acolhedor.' },
-  { id: 3, title: 'Saúde', value: "health", description: 'Sua saúde física e mental é uma prioridade. As cartas do tarot podem oferecer insights sobre seu bem-estar, sugerindo mudanças positivas no estilo de vida, estratégias de gerenciamento do estresse e conselhos sobre autocuidado. Deixe as cartas do tarot orientarem você no caminho para uma vida mais saudável e equilibrada.' },
-]
+  { id: 1, title: 'Profissional', value: "professional", description: 'Orientação sobre carreira, desenvolvimento pessoal e sucesso no trabalho.' },
+  { id: 2, title: 'Amoroso', value: "loving", description: 'Perspectivas sobre relacionamentos existentes, romances futuros e a jornada emocional no amor.' },
+  { id: 3, title: 'Espiritual', value: "spiritual", description: 'Insights sobre crescimento pessoal, autoconhecimento e conexão com o universo.' },
+  { id: 4, title: 'Financeiro', value: "financial", description: 'Revela padrões financeiros, oferece conselhos sobre investimentos e planejamento financeiro.' },
+  { id: 5, title: 'Familiar', value: "family", description: 'Clareza sobre dinâmicas familiares, comunicação e harmonia no lar.' },
+  { id: 6, title: 'Saúde', value: "health", description: 'Oferece conselhos sobre bem-estar físico e mental, estratégias de gerenciamento do estresse e autocuidado.' },
+];
+
 
 
 function classNames(...classes:any) {

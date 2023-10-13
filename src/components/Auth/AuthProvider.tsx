@@ -5,6 +5,7 @@ interface User {
   last_name: string;
   email: string;
   tokens_coins: string;
+  avatar_url: string;
 }
 
 interface AuthContextProps {
@@ -23,14 +24,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const last_name = getCookie('last_name');
     const email = getCookie('email');
     const tokens_coins = getCookie('tokens_coins');
+    const avatar_url = getCookie('avatar_url');
 
     // Se os cookies existirem, atualize o estado do usuário
-    if (first_name && email && last_name && tokens_coins) {
+    if (first_name && email && last_name && tokens_coins && avatar_url) {
       setUser({
         first_name: first_name,
         last_name: last_name,
         email: email,
         tokens_coins: tokens_coins,
+        avatar_url: avatar_url,
       });
     }
   }, []); // Executa este efeito apenas uma vez durante a montagem do componente

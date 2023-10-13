@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
   let cookieFirstName = request.cookies.get('first_name')
   let cookieLastName = request.cookies.get('last_name')
   let cookieBirth = request.cookies.get('date_of_birth')
+  let cookieAvatar = request.cookies.get('avatar_url')
 
   if (!cookieMail || !cookieJwt || !cookieUserId) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

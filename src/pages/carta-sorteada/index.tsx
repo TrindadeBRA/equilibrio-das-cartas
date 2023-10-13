@@ -1,7 +1,13 @@
 import ResultTarotCard from '@/components/ResultTarotCard';
 import Sidebar from '@/components/Sidebar';
-import { useState } from 'react';
 
+function parseCookies(cookieString) {
+    return cookieString.split(';').reduce((cookies, cookie) => {
+        const [name, value] = cookie.split('=').map(c => c.trim());
+        cookies[name] = value;
+        return cookies;
+    }, {});
+}
 
 export default function ResultCardPage({ cardData }: any) {
     return (
@@ -16,10 +22,15 @@ export default function ResultCardPage({ cardData }: any) {
 export async function getServerSideProps(context: any) {
     const { themeReading } = context.query;
     try {
+        const cookies = parseCookies(context.req.headers.cookie || ''); // Parse os cookies
+
+        const token = cookies.jwt; // Obtenha o token JWT do cookie
+
         const response = await fetch('https://equilibriodascartas.thetrinityweb.com.br/wp-json/tarot-api/v1/random-card/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`, // Adicione o token aos cabeçalhos
             },
             body: JSON.stringify({
                 user_id: 1,

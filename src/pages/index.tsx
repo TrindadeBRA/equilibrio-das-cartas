@@ -60,6 +60,7 @@ export default function Login() {
           document.cookie = `last_name=${data.last_name}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `date_of_birth=${data.date_of_birth}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `tokens_coins=${data.tokens_coins}; expires=${expirationDate.toUTCString()}; path=/`;
+          document.cookie = `avatar_url=${data.avatar_url}; expires=${expirationDate.toUTCString()}; path=/`;
 
           // Redirecione para a página de dashboard
           window.location.href = '/dashboard';

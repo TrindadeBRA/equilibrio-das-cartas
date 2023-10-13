@@ -2,7 +2,7 @@
 const nextConfig = {
   swcMinify: false, //
   images: {
-    domains: ['lucastrindade.dev', 'tailwindui.com', 'equilibriodascartas.thetrinityweb.com.br', 'images.unsplash.com'],
+    domains: ['lucastrindade.dev', 'tailwindui.com', 'equilibriodascartas.thetrinityweb.com.br', 'images.unsplash.com', 'secure.gravatar.com'],
   },
 }
 
