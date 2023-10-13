@@ -1,15 +1,12 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react';
 import {
   ArrowDownCircleIcon,
   ArrowPathIcon,
   ArrowUpCircleIcon,
-  Bars3Icon,
   EllipsisHorizontalIcon,
-  PlusSmallIcon,
-} from '@heroicons/react/20/solid'
-import { BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image';
+  PlusSmallIcon
+} from '@heroicons/react/20/solid';
+import { Fragment, useState } from 'react';
 
 
 const navigation = [
