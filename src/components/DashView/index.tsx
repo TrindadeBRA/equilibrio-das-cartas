@@ -122,7 +122,7 @@ export default function DashView() {
   return (
     <>
       <main>
-        <div className="relative isolate overflow-hidden pt-16">
+        <div className="relative isolate overflow-hidden">
           {/* Secondary navigation */}
           <header className="pb-4 pt-6 sm:pb-6">
             <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-4 sm:flex-nowrap sm:px-6 lg:px-8">
