@@ -4,14 +4,10 @@ import { useState } from 'react';
 
 
 export default function ResultCardPage({ cardData }: any) {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
- 
-
     return (
         <>
             <div>
-                <Sidebar contentComponent={() => <ResultTarotCard cardData={cardData} />} />
+                <Sidebar title="Jogo simples" contentComponent={() => <ResultTarotCard cardData={cardData} />} />
             </div>
         </>
     );

@@ -1,16 +1,15 @@
-import { Fragment, useEffect, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react';
 import {
   BackwardIcon,
   Bars3Icon,
   ChartBarIcon,
-  ChartPieIcon,
   CurrencyDollarIcon,
   HomeIcon,
   UserIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
+  XMarkIcon
+} from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import { Fragment, useEffect, useState } from 'react';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon},
@@ -24,7 +23,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Sidebar({ contentComponent: ContentComponent}: any) {
+export default function Sidebar({ contentComponent: ContentComponent, title}: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [slug, setSlug] = useState('');
   
@@ -202,7 +201,7 @@ export default function Sidebar({ contentComponent: ContentComponent}: any) {
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 text-sm font-semibold leading-6 text-white">Dashboard</div>
+          <div className="flex-1 text-sm font-semibold leading-6 text-white">{title}</div>
           <a href="#">
             <span className="sr-only">Your profile</span>
             <Image
