@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
 
@@ -15,11 +15,11 @@ export function middleware(request: NextRequest) {
     const absoluteUrl = new URL('/', baseUrl);
     return NextResponse.redirect(absoluteUrl.href);
   }
- 
+
   return NextResponse.next();
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/jogar-tarot/:path*', '/dashboard/:path*', '/carta-sorteada/:path*', '/meu-perfil/:path*', '/historico-de-cartas/:path*', '/tokens/:path*']
-,}
+  matcher: ['/jogar-tarot/:path*', '/dashboard/:path*', '/carta-sorteada/:path*', '/meu-perfil/:path*', '/historico-de-cartas/:path*', '/tokens/:path*']  ,
+}

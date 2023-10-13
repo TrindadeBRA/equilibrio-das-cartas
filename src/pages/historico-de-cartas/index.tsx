@@ -1,4 +1,4 @@
-import DashView from '@/components/DashView';
+import CardHistory from '@/components/CardHistory';
 import Sidebar from '@/components/Sidebar';
 import Head from 'next/head';
 
@@ -9,7 +9,7 @@ export default function HistoricCards() {
                 <title>Últimos Jogos - Equilíbrio das cartas</title>
             </Head>
             <div>
-                <Sidebar title="Últimos jogos" contentComponent={DashView} />
+                <Sidebar title="Últimos jogos" contentComponent={CardHistory} />
             </div>
         </>
     )

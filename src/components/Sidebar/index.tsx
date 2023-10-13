@@ -10,23 +10,24 @@ import {
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { Fragment, useEffect, useState } from 'react';
+import { useAuth } from '../Auth/AuthProvider';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon},
-  { name: 'Histórico de Cartas', href: '/historico-de-cartas', icon: BackwardIcon},
-  { name: 'Tokens', href: '/tokens', icon: CurrencyDollarIcon},
-  { name: 'Jogar Carta', href: '/jogar-tarot', icon: ChartBarIcon},
-  { name: 'Meu Perfil', href: '/meu-perfil', icon: UserIcon},
+  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+  { name: 'Histórico de Cartas', href: '/historico-de-cartas', icon: BackwardIcon },
+  { name: 'Tokens', href: '/tokens', icon: CurrencyDollarIcon },
+  { name: 'Jogar Carta', href: '/jogar-tarot', icon: ChartBarIcon },
+  { name: 'Meu Perfil', href: '/meu-perfil', icon: UserIcon },
 ]
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Sidebar({ contentComponent: ContentComponent, title}: any) {
+export default function Sidebar({ contentComponent: ContentComponent, title }: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [slug, setSlug] = useState('');
-  
+
 
   useEffect(() => {
     // Get the current URL
@@ -41,6 +42,7 @@ export default function Sidebar({ contentComponent: ContentComponent, title}: an
   }, []);
 
   // console.log("XX", ContentCompoent)
+  const { user } = useAuth();
 
   return (
     <>
@@ -126,6 +128,22 @@ export default function Sidebar({ contentComponent: ContentComponent, title}: an
                           </ul>
                         </li>
                       </ul>
+                      <a
+                        href="#"
+                        className="flex items-center gap-x-4 py-3 text-sm font-semibold leading-6 text-white hover:bg-[#9e30b4]"
+                      >
+                        <Image
+                          className="h-12 w-12 rounded-full bg-[#9e30b4]"
+                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          alt=""
+                          height={48}
+                          width={48}
+                        />
+                        <div className="flex flex-col">
+                          <span>{user?.first_name} {user?.last_name}</span>
+                          <span>Tokens restantes: {user?.tokens_coins}</span>
+                        </div>
+                      </a>
                     </nav>
                   </div>
                 </Dialog.Panel>
@@ -181,14 +199,16 @@ export default function Sidebar({ contentComponent: ContentComponent, title}: an
                     className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-[#9e30b4]"
                   >
                     <Image
-                      className="h-8 w-8 rounded-full bg-[#9e30b4]"
+                      className="h-12 w-12 rounded-full bg-[#9e30b4]"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt=""
-                      height={32}
-                      width={32}
+                      height={48}
+                      width={48}
                     />
-                    <span className="sr-only">Your profile</span>
-                    <span aria-hidden="true">Tom Cook</span>
+                    <div className="flex flex-col">
+                      <span>{user?.first_name} {user?.last_name}</span>
+                      <span>Tokens restantes: {user?.tokens_coins}</span>
+                    </div>
                   </a>
                 </li>
               </ul>
@@ -202,16 +222,6 @@ export default function Sidebar({ contentComponent: ContentComponent, title}: an
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
           <div className="flex-1 text-sm font-semibold leading-6 text-white">{title}</div>
-          <a href="#">
-            <span className="sr-only">Your profile</span>
-            <Image
-              className="h-8 w-8 rounded-full bg-[#9e30b4]"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-              height={32}
-              width={32}
-            />
-          </a>
         </div>
 
         <main className="py-4 lg:pl-72 h-[100vh]">
