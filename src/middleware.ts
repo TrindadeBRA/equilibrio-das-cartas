@@ -6,9 +6,9 @@ export function middleware(request: NextRequest) {
   // Getting cookies from the request using the `RequestCookies` API
 
   let cookieMail = request.cookies.get('email')
-  console.log(cookieMail) // => { name: 'nextjs', value: 'fast', Path: '/' }
+  console.log("cookieMail", cookieMail) // => { name: 'nextjs', value: 'fast', Path: '/' }
   let cookieJwt = request.cookies.get('jwt')
-  console.log(cookieJwt) // => { name: 'nextjs', value: 'fast', Path: '/' }
+  console.log("cookieJwt", cookieJwt) // => { name: 'nextjs', value: 'fast', Path: '/' }
 
   const allCookies = request.cookies.getAll()
   console.log(allCookies) // => [{ name: 'nextjs', value: 'fast' }]
@@ -29,5 +29,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/jogar-tarot/:path*', '/dashboard/:path*', '/carta-sorteada/:path*', '/meu-perfil/:path*', '/historico-de-cartas/:path*']
+  matcher: ['/jogar-tarot/:path*', '/dashboard/:path*', '/carta-sorteada/:path*', '/meu-perfil/:path*', '/historico-de-cartas/:path*', '/tokens/:path*']
 ,}

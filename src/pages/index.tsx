@@ -2,10 +2,15 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
+import { useState } from 'react';
+
+type AuthError = string | null;
 
 const Login = () => {
   const router = useRouter();
 
+  const [authError, setAuthError] = useState<AuthError>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Endereço de e-mail inválido').required('E-mail é obrigatório'),
@@ -22,6 +27,9 @@ const Login = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
+      setIsLoading(true); // Ativa o estado de carregamento quando o botão é clicado
+      setAuthError(null); // Limpa qualquer erro existente
+
       try {
         const response = await fetch('https://equilibriodascartas.thetrinityweb.com.br/wp-json/jwt-auth/v1/token', {
           method: 'POST',
@@ -45,14 +53,30 @@ const Login = () => {
           document.cookie = `jwt=${data.token}; expires=${expirationDate.toUTCString()}; path=/`;
           document.cookie = `email=${data.user_email}; expires=${expirationDate.toUTCString()}; path=/`;
 
+
           // Redirecione para a página de dashboard
           window.location.href = '/dashboard';
         } else {
+          
           // Se houver um erro na resposta da API, exiba a mensagem de erro
-          console.error('Erro ao autenticar:', data.message);
+          switch (data.code) {
+            case "[jwt_auth] incorrect_password":
+              setAuthError("A senha fornecida para o e-mail inserido está incorreta.");
+              break;
+
+            case "[jwt_auth] invalid_email":
+              setAuthError("Endereço de e-mail desconhecido.");
+              break;
+          
+            default:
+              break;
+          }
+
         }
       } catch (error) {
         console.error('Erro ao autenticar:', error);
+      } finally {
+        setIsLoading(false); // Desativa o estado de carregamento independentemente de ter sucesso ou falha
       }
     },
   });
@@ -119,6 +143,10 @@ const Login = () => {
                       {formik.touched.password && formik.errors.password ? (
                         <p className="mt-2 text-sm text-red-600">{formik.errors.password}</p>
                       ) : null}
+
+                      {authError && (
+                        <p className="mt-2 text-sm text-red-600">{authError}</p>
+                      )}                      
                     </div>
                   </div>
 
@@ -133,9 +161,10 @@ const Login = () => {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-[#da18ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#9e30b4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#da18ff]"
+                      className="flex w-full justify-center rounded-md bg-[#da18ff] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#9e30b4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#da18ff] disabled:cursor-progress"
+                      disabled={isLoading}
                     >
-                      Conectar
+                      {isLoading ? 'Carregando...' : 'Enviar'}
                     </button>
                   </div>
                 </form>
