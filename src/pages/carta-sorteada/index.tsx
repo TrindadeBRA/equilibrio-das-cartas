@@ -2,8 +2,8 @@ import ResultTarotCard from '@/components/ResultTarotCard';
 import Sidebar from '@/components/Sidebar';
 
 function parseCookies(cookieString:any) {
-    return cookieString.split(';').reduce((cookies: { [x: string]: any; }, cookie: { split: (arg0: string) => { (): any; new(): any; map: { (arg0: (c: any) => any): [any, any]; new(): any; }; }; }) => {
-        const [name, value] = cookie.split('=').map(c => c.trim());
+    return cookieString.split(';').reduce((cookies:any, cookie:any) => {
+        const [name, value]:any = cookie.split('=').map((c: string) => c.trim());
         cookies[name] = value;
         return cookies;
     }, {});
