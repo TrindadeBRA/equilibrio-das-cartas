@@ -21,6 +21,8 @@ export default function ResultCardPage({ cardData }: any) {
 
 export async function getServerSideProps(context: any) {
     const { themeReading } = context.query;
+    const { user_id } = context.req.cookies; // Supondo que o user_id esteja armazenado em cookies
+
     try {
         const cookies = parseCookies(context.req.headers.cookie || ''); // Parse os cookies
 
@@ -33,7 +35,7 @@ export async function getServerSideProps(context: any) {
                 'Authorization': `Bearer ${token}`, // Adicione o token aos cabeçalhos
             },
             body: JSON.stringify({
-                user_id: 1,
+                user_id: user_id,
                 theme: themeReading,
             }),
         });
