@@ -134,7 +134,7 @@ export default function Sidebar({ contentComponent: ContentComponent, title }: a
                       >
                         <Image
                           className="h-12 w-12 rounded-full bg-[#9e30b4]"
-                          src={user?.avatar_url}
+                          src={user?.avatar_url ? user?.avatar_url : "/public/avatar.webp"}
                           alt=""
                           height={48}
                           width={48}
