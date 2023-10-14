@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../Auth/AuthProvider';
 
-const ProfileComponent: React.FC = () => {
+const DashView: React.FC = () => {
   const { user } = useAuth();
   
   return (
@@ -18,4 +18,4 @@ const ProfileComponent: React.FC = () => {
   );
 };
 
-export default ProfileComponent;
+export default DashView;
